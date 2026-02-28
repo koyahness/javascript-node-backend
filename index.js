@@ -25,7 +25,7 @@ uses of node: building APIs, server-rendered apps, real-time applications, micro
 
  ############### initialise node in a repo use using npm init -y; this will create a package.json file needed when creating apps or project ####  -y will say yes to all questions asked
 
- the main files that you will run: entry point into which other files will be imported into
+ INDEX.JS >>>>>>> the main files that you will run: entry point into which other files will be imported into
 
 */
 
