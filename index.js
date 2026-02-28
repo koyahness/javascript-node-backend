@@ -30,14 +30,19 @@ uses of node: building APIs, server-rendered apps, real-time applications, micro
 
  to run code in the commandline >>>>>> node index.js or node index 
 
+ to use ES modules; set "type": "module", in json file, commonjs is the default
+
 */
 
-// import generateRandomNumber from './utils'; // there is no need to use the .js at the end
+import getPosts from './postController.js';
+import {celciusToFahrenheit, generateRandomNumber} from './utils.js'; // there is no need to use the .js at the end
 // const generateRandomNumber = require('./utils'); // there is no need to use the .js at the end import single function
-const {celciusToFahrenheit, generateRandomNumber} = require('./utils'); // there is no need to use the .js at the end
+// const {celciusToFahrenheit, generateRandomNumber} = require('./utils'); // there is no need to use the .js at the end
 // import generateRandomNumber from './utils'; // there is no need to use the .js at the end
 
 console.log('Random Number: ', generateRandomNumber(), "whose F value is :", celciusToFahrenheit(generateRandomNumber()));
+
+console.log(getPosts());
 
 
 

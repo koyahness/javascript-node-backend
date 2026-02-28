@@ -1,19 +1,19 @@
 // modules
 // file with functions/ modules
-function generateRandomNumber() {
+export function generateRandomNumber() {
     return Math.floor(Math.random() * 100) + 1;
 }
 
 
-function celciusToFahrenheit(celcius) {
+export function celciusToFahrenheit(celcius) {
     return ((celcius * 9) / 5) + 32;
 }
 
 
-module.exports = {
-    generateRandomNumber,
-    celciusToFahrenheit,
-};
+// module.exports = {
+//     generateRandomNumber,
+//     celciusToFahrenheit,
+// };
 
 
 // module.exports = generateRandomNumber;//export single function
