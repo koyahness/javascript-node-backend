@@ -6,10 +6,31 @@ import http from 'http';
 const PORT = 8000;
 
 const server = http.createServer((req, res) => {
+    // req is incoming request like url or headers....from clients, browsers, apps, scripts to nodejs servers
+    // res is used to send response back from the requests... the server processes requests and sends back data in html or json... status codes
+    //they are callbacks for requests and responses
+
+
+
+    //create a router, a manual one... some of these things are handled in framworks like express
+    if (req.url === '/') {
+
     res.setHeader('Content-Type', 'text/html'); //another option is text/plain
     // res.statusCode = 404;
-    res.write("<h1>Hello</h1>"); //send some text to the client which is the browser in our case
+    res.write("<h1>Home Page</h1>"); //send some text to the client which is the browser in our case
     res.end(); //send some text to the client which is the browser in our case
+    } else if (req.url === '/about') {
+        res.setHeader('Content-Type', 'text/html'); //another option is text/plain
+    // res.statusCode = 404;
+    res.write("<h1>About</h1>"); //send some text to the client which is the browser in our case
+    res.end();
+    } else {
+        res.writeHead(404, {'Content-Type': 'text/html'}); //another option is text/plain
+    // res.statusCode = 404;
+    res.write("<h1>No Page</h1>"); //send some text to the client which is the browser in our case
+    res.end();
+    }
+
 }); //method to create server that take in function that will have a request and responses
 
 server.listen(PORT, () => { //have to listen on a port funct ion that takes in a port and a function that can do something after it connects
