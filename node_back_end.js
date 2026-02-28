@@ -1,19 +1,29 @@
 /*
 Prerequisites:
-
 Javascript fundamentals (functions, loops, objects, classes etc)
 Asynchronous programming - promises, callbacks, async/await
 HTTP basics (methods, status codes etc)
 How JSON APIs work
 NPM (node package manager)
 
-V8 JS engine: node is built on V8 JS engine (that is written in C++) the same engine that powers google chrome. Other browsers have their own engines like on firefox has Spider MOnkey, safari has  javascript core
+V8 JS engine: node is built on V8 JS engine (that is written in C++) the same engine that powers google chrome. Other browsers have their own engines like on firefox there is Spider MOnkey, safari has  javascript core. engines takes JS code and converts it to machine code.
 
-Non-blocking
+Non-blocking: it doesnt wait around for i/o operations, which network calls, file system operations, database operates.... uses events and callbacks.... hence fast and efficient
 
-single threaded
+single threaded:
 
-event loop
+event loop: allow node to peform non-blocking non-operations
+
+uses of node: building APIs, server-rendered apps, real-time applications, microservices, commandline tools, bots, web scraping, web servers
+ NOT GOOD FOR CPU INTENSIVE TASKS
+
+ node --version #to check installed
+
+ npm -v #come with nodejs used to install 3rd party packages
+
+ to run commandline javasript environment not going through a file or the browser, run node
 
 */
+
+
 
