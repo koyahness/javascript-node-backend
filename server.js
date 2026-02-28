@@ -7,7 +7,7 @@ const PORT = 8000;
 
 const server = http.createServer((req, res) => {
     res.setHeader('Content-Type', 'text/html');
-    res.write("Hello"); //send some text to the client which is the browser in our case
+    res.write("<h1>Hello</h1>"); //send some text to the client which is the browser in our case
     res.end(); //send some text to the client which is the browser in our case
 }); //method to create server that take in function that will have a request and responses
 
