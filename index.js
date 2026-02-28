@@ -1,4 +1,5 @@
 /*
+
 Prerequisites:
 Javascript fundamentals (functions, loops, objects, classes etc)
 Asynchronous programming - promises, callbacks, async/await
