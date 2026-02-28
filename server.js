@@ -31,7 +31,7 @@ const server = http.createServer((req, res) => {
                 res.write("<h1>No Page</h1>"); //send some text to the client which is the browser in our case
                 res.end();
                 }
-                
+
             } else {
 
                 throw new Error("Method not allowed"); 
@@ -39,13 +39,11 @@ const server = http.createServer((req, res) => {
 
         } catch (error) {
 
-        }
-
-
-
-   
+        } 
 
 }); //method to create server that take in function that will have a request and responses
+
+
 
 server.listen(PORT, () => { //have to listen on a port funct ion that takes in a port and a function that can do something after it connects
     console.log('server running on port :', PORT) // can create a variable for the port
