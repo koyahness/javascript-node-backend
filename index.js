@@ -33,10 +33,11 @@ uses of node: building APIs, server-rendered apps, real-time applications, micro
 */
 
 // import generateRandomNumber from './utils'; // there is no need to use the .js at the end
-const generateRandomNumber = require('./utils'); // there is no need to use the .js at the end
+// const generateRandomNumber = require('./utils'); // there is no need to use the .js at the end import single function
+const {celciusToFahrenheit, generateRandomNumber} = require('./utils'); // there is no need to use the .js at the end
 // import generateRandomNumber from './utils'; // there is no need to use the .js at the end
 
-console.log('Random Number: ', generateRandomNumber());
+console.log('Random Number: ', generateRandomNumber(), "whose F value is :", celciusToFahrenheit(generateRandomNumber()));
 
 
 
