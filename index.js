@@ -32,7 +32,10 @@ uses of node: building APIs, server-rendered apps, real-time applications, micro
 
 */
 
-console.log("Hello");
+const generateRandomNumber = require('./utils'); // there is no need to use the .js at the end
+// import generateRandomNumber from './utils'; // there is no need to use the .js at the end
+
+console.log('Random Number: ${generateRandomNumber()}');
 
 
 
