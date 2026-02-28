@@ -1,12 +1,11 @@
 {
   "name": "node-js-tutorial",
   "version": "1.0.0",
-  "description": "nodejs tutorial",
-  "main": "node_back_end.js",
-  "scripts": { //allow to create your own npm scripts to start you own servers etc
+  "description": "node-js-tutorial",
+  "main": "index.js",
+  "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
   "author": "koyah",
   "license": "MIT"
 }

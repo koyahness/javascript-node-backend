@@ -28,7 +28,11 @@ uses of node: building APIs, server-rendered apps, real-time applications, micro
 
  INDEX.JS >>>>>>> the main files that you will run: entry point into which other files will be imported into
 
+ to run code in the commandline >>>>>> node index.js or node index 
+
 */
+
+console.log("Hello");
 
 
 
