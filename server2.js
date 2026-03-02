@@ -19,7 +19,9 @@ const logger = (req, res, next) => {
 };
 
 const server = http.createServer( (req, res) => {
-    if (req.url === '/api/users' && req.method === 'GET') {
+
+    logger(req, res, () => {
+        if (req.url === '/api/users' && req.method === 'GET') {
         res.setHeader('Content-Type', 'application/json'); //another option is text/plain
         res.write(json.stringify(users)); //pass in the data
         res.end();
@@ -45,6 +47,9 @@ const server = http.createServer( (req, res) => {
         res.write(json.stringify({message: 'route not found'})); //pass in the data
         res.end();
     }
+
+    });
+
 }); 
 
 server.listen(PORT, () => { //have to listen on a port funct ion that takes in a port and a function that can do something after it connects
