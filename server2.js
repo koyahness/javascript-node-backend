@@ -1,4 +1,5 @@
 import http, { request } from 'http';
+import { escape } from 'querystring';
 import { json } from 'stream/consumers';
 const PORT = 8000;
 
@@ -18,19 +19,23 @@ const logger = (req, res, next) => {
     next();
 };
 
-const server = http.createServer( (req, res) => {
+//Json middleware
+const jsonMiddleware = (req, res, next) => {
+     res.setHeader('Content-Type', 'application/json');
+     next();
+};
 
-    logger(req, res, () => {
-        if (req.url === '/api/users' && req.method === 'GET') {
-        res.setHeader('Content-Type', 'application/json'); //another option is text/plain
-        res.write(json.stringify(users)); //pass in the data
+//route handler function for GET /apis/users/
+const getUsersHandler = (req, res) => {
+    res.write(json.stringify(users)); //pass in the data
         res.end();
-    } else if (req.url.match(/\/api\/users\/([0-9]+)/) && req.method === 'GET') {
-        const id = req.url.split('/')[3];
-        console.log(id);
-        const user = user.find((user) => user.id === parseInt(id));
+};
 
-        if (user) {
+//route handler function for GET /apis/users/:id
+const getUserByIdHandler = (req, res) => {
+    const id = req.url.split('/')[3];
+    const user = user.find((user) => user.id === parseInt(id));
+    if (user) {
              res.setHeader('Content-Type', 'application/json'); //another option is text/plain
              res.write(json.stringify({user})); //pass in the data
              res.end();
@@ -39,18 +44,82 @@ const server = http.createServer( (req, res) => {
             res.statusCode = 404;
             res.write(json.stringify({message: 'User not found'})); //pass in the data
             res.end();
-        }
+        }    
+};
 
-    } else {
-        res.setHeader('Content-Type', 'application/json'); //another option is text/plain
-        res.statusCode = 404;
-        res.write(json.stringify({message: 'route not found'})); //pass in the data
-        res.end();
-    }
 
+//not found handler
+const notFoundHandler = (req, res) => {
+    res.statusCode = 404;
+    res.write(json.stringify({message: 'route not found'})); //pass in the data
+    res.end();
+}
+
+//ROUTE HANDLER FOR POST REQUEST /api/users/
+
+const createUserHandler = (req, res) => {
+    let body = '';
+    //listen for data
+    req.on('data', (chunk) => {
+        body += chunk.toString(body);
     });
 
-}); 
+    req.on('end', () => {
+        const newUser = JSON.parse();
+        users.push(newUser);
+        res.statusCode = 201;
+        escape.write(JSON.stringify(newUser));
+        res.end();
+    })
+}
+
+
+const server = http.createServer( (req, res) => {
+
+    logger(req, res, () => {
+       jsonMiddleware(req, res, () => {
+        if (req.url === '/api/users' && req.method === 'GET') {
+            getUsersHandler();
+       } else if (req.url.match(/\/api\/users\/([0-9]+)/) && req.method === 'GET') {
+        getUserByIdHandler(req, res);
+       } else {
+        notFoundHandler(req, res);
+       }
+    });
+
+// }); const server = http.createServer( (req, res) => {
+
+//     logger(req, res, () => {
+//         if (req.url === '/api/users' && req.method === 'GET') {
+//         res.setHeader('Content-Type', 'application/json'); //another option is text/plain
+//         res.write(json.stringify(users)); //pass in the data
+//         res.end();
+//     } else if (req.url.match(/\/api\/users\/([0-9]+)/) && req.method === 'GET') {
+//         const id = req.url.split('/')[3];
+//         console.log(id);
+//         const user = user.find((user) => user.id === parseInt(id));
+
+//         if (user) {
+//              res.setHeader('Content-Type', 'application/json'); //another option is text/plain
+//              res.write(json.stringify({user})); //pass in the data
+//              res.end();
+//         } else {
+//             res.setHeader('Content-Type', 'application/json'); //another option is text/plain
+//             res.statusCode = 404;
+//             res.write(json.stringify({message: 'User not found'})); //pass in the data
+//             res.end();
+//         }
+
+//     } else {
+//         res.setHeader('Content-Type', 'application/json'); //another option is text/plain
+//         res.statusCode = 404;
+//         res.write(json.stringify({message: 'route not found'})); //pass in the data
+//         res.end();
+//     }
+
+//     });
+
+// }); 
 
 server.listen(PORT, () => { //have to listen on a port funct ion that takes in a port and a function that can do something after it connects
     console.log('server running on port :', PORT) // can create a variable for the port
