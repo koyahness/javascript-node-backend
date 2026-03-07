@@ -44,17 +44,18 @@ const writeFile = async () => {
 // appendFile()
 const appendFile = async () => {
     try {
-        await fs.writeFile('./test.txt', 'what you want to append otherwise it will overwrite it');
+        await fs.appendFile('./test.txt', '\nwhat you want to append otherwise it will overwrite it');
         console.log("file written to")
     } catch (error) {
         console.log(error);
     }
 };
-
+ 
 
 
 readFile();
 writeFile();
+appendFile();
 
 
 
