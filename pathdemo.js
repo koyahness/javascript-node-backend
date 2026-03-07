@@ -11,3 +11,6 @@ console.log(path.dirname(filePath));
 
 // get the extension name of the file
 console.log(path.extname(filePath));
+
+// parse()
+console.log (path.parse(filePath))
