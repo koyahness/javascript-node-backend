@@ -14,9 +14,9 @@ import fs from 'fs/promises';
 
 
  // readFile() - promise version .then( syntax) 
-fs.readFile('./test.txt', 'utf8'); // this returns a promises
-.then((data) => console.log(data))
-.catch((err) => console.log(err));
+// fs.readFile('./test.txt', 'utf8'); // this returns a promises
+// .then((data) => console.log(data))
+// .catch((err) => console.log(err));
 
 
  // readFile() - async/await // this is the best version nto use
@@ -29,7 +29,6 @@ console.log(data);
     }
 };
 
-readFile();
 
 // writeFile()
 
@@ -40,9 +39,22 @@ const writeFile = async () => {
     } catch (error) {
         console.log(error);
     }
-
-
 };
+
+// appendFile()
+const appendFile = async () => {
+    try {
+        await fs.writeFile('./test.txt', 'what you want to append otherwise it will overwrite it');
+        console.log("file written to")
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+
+
+readFile();
+writeFile();
 
 
 
