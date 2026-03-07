@@ -34,7 +34,7 @@ console.log(data);
 
 const writeFile = async () => {
     try {
-        await fs.writeFile('./test.txt', 'what you want to write');
+        await fs.writeFile('./test.txt', '\nwhat you want to write\n');
         console.log("file written to")
     } catch (error) {
         console.log(error);
@@ -54,6 +54,8 @@ const appendFile = async () => {
 
 
 readFile();
+writeFile();
+appendFile();
 writeFile();
 appendFile();
 
