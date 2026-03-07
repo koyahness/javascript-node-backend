@@ -31,4 +31,19 @@ console.log(data);
 
 readFile();
 
+// writeFile()
+
+const writeFile = async () => {
+    try {
+        await fs.writeFile('./test.txt', 'what you want to write');
+        console.log("file written to")
+    } catch (error) {
+        console.log(error);
+    }
+
+
+};
+
+
+
  
