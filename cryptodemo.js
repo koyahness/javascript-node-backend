@@ -5,22 +5,21 @@
 
 import crypto from 'crypto'
 
-crypto.cre
+
 // create hash with createhash method
-const hash = crypto.createHash('sha256'); //take in the algorithm you want to use
-  
-hash.update('password1234') //to hash something use the update method
-
-//to never store plain text passwords in databases, so hash it
-
- console.log(hash.digest('hex')) // to get the hash... set output to be in hex
-
+// const hash = crypto.createHash('sha256'); //take in the algorithm you want to use
+// hash.update('password1234') //to hash something use the update method
+// //to never store plain text passwords in databases, so hash it
+//  console.log(hash.digest('hex'))
+ 
+ 
+ // to get the hash... set output to be in hex
 //to generate cryptographically strong hexadecimalsring
 //randombytes
-crypto.randomBytes(16, (err, buff) => {
-    if (err) throw err;
-    console.log(buff.toString('hex'));
-})
+// crypto.randomBytes(16, (err, buff) => {
+//     if (err) throw err;
+//     console.log(buff.toString('hex'));
+// })
 //can use to generated userids for exampl
 
 
@@ -37,9 +36,16 @@ const key = crypto.randomBytes(32);
 const iv = crypto.randomBytes(16);
 
  const cipher = crypto.createCipheriv(algorithm, key, iv); //gives cipher text
- let encrypted = cipher.update('Hello, this is a secret message', 'utf8', 'hex');
+ let encrypted = cipher.update('Hello, this is a secret message', 'utf8', 'hex'); //pass what you want to encrypt
  encrypted +=  cipher.final('hex');
  console.log(encrypted);
+
+// to decrypt
+ const decipher = crypto.createDecipheriv(algorithm, key, iv); //gives cipher text
+ let decrypted = decipher.update(encrypted, 'hex', 'utf8'); //pass what you want to encrypt
+ decrypted +=  decipher.final('utf8');
+ console.log(decrypted);
+
 
 
 
